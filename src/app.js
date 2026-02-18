@@ -37,9 +37,8 @@ function generateNewCard() {
   ];
   const chosenSuit = suits[getRandomIndex(suits)];
   const chosenValue = values[getRandomIndex(values)];
-  // console.log(chosenSuit, chosenValue);
+  
   const HTMLSuits = document.querySelectorAll(".suit");
-  // console.log(HTMLSuits);
   for (let suit of HTMLSuits) {
     suit.textContent = chosenSuit.suit;
     suit.style.color = chosenSuit.color;
