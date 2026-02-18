@@ -47,7 +47,7 @@ function generateNewCard() {
   const HTMLValue = document.querySelector(".card-value");
   console.log(HTMLValue);
   HTMLValue.textContent = chosenValue;
-  return
+  return;
 }
 
 function getRandomIndex(arr) {
