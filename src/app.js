@@ -1,7 +1,7 @@
 import "bootstrap";
 import "./style.css";
 
-import "./assets/img/4geeks.ico";
+import "./assets/img/playing-card.png";
 
 window.onload = function () {
   //write your code here
@@ -10,45 +10,47 @@ window.onload = function () {
   randomButton.addEventListener("click", () => {
     generateNewCard();
   });
+  colorCards(foundationsPiles);
+  colorCards(tableauPiles);
 };
 
 const foundationsPiles = [
-  { value: A, suit: "♦", color: "red" },
-  { value: A, suit: "♥", color: "red" },
-  { value: A, suit: "♠", color: "black" },
-  { value: A, suit: "♣", color: "black" },
+  { value: "A", suit: "♦", color: "red" },
+  { value: "A", suit: "♥", color: "red" },
+  { value: "A", suit: "♠", color: "black" },
+  { value: "A", suit: "♣", color: "black" },
+  "foundations",
 ];
 
 const tableauPiles = [
-  { value: K, suit: "♦", color: "red" },
-  { value: Q, suit: "♥", color: "red" },
-  { value: J, suit: "♠", color: "black" },
-  { value: 10, suit: "♣", color: "black" },
-  { value: 9, suit: "♦", color: "red" },
+  { value: "K", suit: "♦", color: "red" },
+  { value: "Q", suit: "♥", color: "red" },
+  { value: "J", suit: "♠", color: "black" },
+  { value: "10", suit: "♣", color: "black" },
+  { value: "9", suit: "♦", color: "red" },
+  { value: "9", suit: "♦", color: "red" },
+  { value: "9", suit: "♦", color: "red" },
+  "tableau",
 ];
 
 function colorCards(pileType, index) {
-  const indexStart = index;
-  const indexEnd = index;
+  let indexStart = index;
+  let indexEnd = index;
   if (index === undefined) {
     indexStart = 0;
-    indexEnd = pileType.length;
+    indexEnd = pileType.length - 1;
   }
-  for (let topCard = indexStart; topCard < indexEnd; topCard++) {
-    const topCardSuit = document.querySelector(".suit");
-    // topCard.innerHTML = ;
+  const ulPileType = document.querySelector("#" + pileType[pileType.length - 1]);
+  const liPileValues = ulPileType.querySelectorAll(".card-pile-value");
+  const liPileSuits = ulPileType.querySelectorAll(".card-pile-suit");
+
+  for (let i = indexStart; i < indexEnd; i++) {
+    liPileValues[i].textContent = pileType[i].value;
+    liPileSuits[i].textContent = pileType[i].suit;
+    liPileValues[i].style.color = pileType[i].color;
+    liPileSuits[i].style.color = pileType[i].color;
   }
 }
-
-//Sample
-const ul = document.querySelector('ul'); // Select the <ul>
-const listItems = ul.querySelectorAll('li'); // Get all <li> elements
-
-listItems.forEach((li, index) => {
-    if (index < myArray.length) {
-        li.textContent = myArray[index]; // Update the <li> text
-    }
-});
 
 function generateNewCard() {
   const suits = [
