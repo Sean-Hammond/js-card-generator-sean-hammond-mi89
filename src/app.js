@@ -58,7 +58,7 @@ function flipNewCard(suitFlipped, valueFlipped) {
   const HTMLSuits = document.querySelectorAll(".suit");
   for (let suit of HTMLSuits) {
     suit.textContent = suitFlipped.suit;
-    suit.style.color = valueFlipped.color;
+    suit.style.color = suitFlipped.color;
   }
   const HTMLValue = document.querySelector(".card-value");
   console.log(HTMLValue);
