@@ -39,7 +39,9 @@ function colorCards(pileType, index) {
     indexStart = 0;
     indexEnd = pileType.length - 1;
   }
-  const ulPileType = document.querySelector("#" + pileType[pileType.length - 1]);
+  const ulPileType = document.querySelector(
+    "#" + pileType[pileType.length - 1],
+  );
   const liPileValues = ulPileType.querySelectorAll(".card-pile-value");
   const liPileSuits = ulPileType.querySelectorAll(".card-pile-suit");
 
@@ -49,6 +51,20 @@ function colorCards(pileType, index) {
     liPileValues[i].style.color = pileType[i].color;
     liPileSuits[i].style.color = pileType[i].color;
   }
+  return;
+}
+
+function flipNewCard(suitFlipped, valueFlipped) {
+  const HTMLSuits = document.querySelectorAll(".suit");
+  for (let suit of HTMLSuits) {
+    suit.textContent = suitFlipped.suit;
+    suit.style.color = valueFlipped.color;
+  }
+  const HTMLValue = document.querySelector(".card-value");
+  console.log(HTMLValue);
+  HTMLValue.textContent = valueFlipped;
+  HTMLValue.style.color = suitFlipped.color;
+  return;
 }
 
 function generateNewCard() {
@@ -76,15 +92,17 @@ function generateNewCard() {
   const chosenSuit = suits[getRandomIndex(suits)];
   const chosenValue = values[getRandomIndex(values)];
 
-  const HTMLSuits = document.querySelectorAll(".suit");
-  for (let suit of HTMLSuits) {
-    suit.textContent = chosenSuit.suit;
-    suit.style.color = chosenSuit.color;
-  }
-  const HTMLValue = document.querySelector(".card-value");
-  console.log(HTMLValue);
-  HTMLValue.textContent = chosenValue;
-  HTMLValue.style.color = chosenSuit.color;
+  flipNewCard(chosenSuit, chosenValue);
+
+  // const HTMLSuits = document.querySelectorAll(".suit");
+  // for (let suit of HTMLSuits) {
+  //   suit.textContent = chosenSuit.suit;
+  //   suit.style.color = chosenSuit.color;
+  // }
+  // const HTMLValue = document.querySelector(".card-value");
+  // console.log(HTMLValue);
+  // HTMLValue.textContent = chosenValue;
+  // HTMLValue.style.color = chosenSuit.color;
   return;
 }
 
