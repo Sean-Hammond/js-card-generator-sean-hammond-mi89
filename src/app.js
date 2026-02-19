@@ -45,7 +45,7 @@ function generateNewCard() {
   const HTMLValue = document.querySelector(".card-value");
   console.log(HTMLValue);
   HTMLValue.textContent = chosenValue;
-  
+  HTMLValue.style.color = chosenSuit.color;
   return;
 }
 
