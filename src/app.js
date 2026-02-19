@@ -29,7 +29,6 @@ const tableauPiles = [
   { value: "10", suit: "♣", color: "black" },
   { value: "9", suit: "♦", color: "red" },
   { value: "9", suit: "♦", color: "red" },
-  { value: "9", suit: "♦", color: "red" },
   "tableau",
 ];
 
