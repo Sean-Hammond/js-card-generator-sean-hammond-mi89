@@ -1,9 +1,19 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 .playing-card{
-    height: 60dvh;
-    aspect-ratio: .66;
+    height: 63dvh;
+    aspect-ratio: .71;
+    max-width: 45dvh;
     background-color: white;
+    border-radius: 7%;
+    display: flex;
+    justify-content: center;
+}
+
+.playing-card img {
+    rotate: 90deg;
+    width: 56dvh; /* apparent HEIGHT when image is rotated 90deg */
+    object-fit: contain;
 }
 
 .bottom-suit {

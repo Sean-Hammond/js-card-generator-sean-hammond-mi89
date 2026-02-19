@@ -1,7 +1,6 @@
 import "bootstrap";
 import "./style.css";
 
-import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 window.onload = function () {
@@ -46,6 +45,7 @@ function generateNewCard() {
   const HTMLValue = document.querySelector(".card-value");
   console.log(HTMLValue);
   HTMLValue.textContent = chosenValue;
+  
   return;
 }
 
