@@ -10,13 +10,26 @@ window.onload = function () {
   randomButton.addEventListener("click", () => {
     flipNewCard();
   });
+  
   changeCards(foundationsPiles);
   changeCards(tableauPiles);
+  showSelectedCard();
 };
 
-let currentRandomValue = {value: "A", rank: 1};
-let currentRandomSuit = {suit: "♠", color: "black"};
+let currentRandomValue = { value: "A", rank: 1 };
+let currentRandomSuit = { suit: "♠", color: "black" };
+let currentCardSelected = { pile: "draw", index: 0 };
 
+function showSelectedCard() {
+  const selectedCard = document.querySelector("#drawn-card");
+  if (currentCardSelected.pile === "foundations") {
+    selectedCard = document.querySelector("#foundations-" + currentCardSelected.index);
+  }
+  if (currentCardSelected.pile === "tableau") {
+    selectedCard = document.querySelector("#tableau-" + currentCardSelected.index);
+  }
+  selectedCard.style.border = ".25rem solid red";
+}
 
 const foundationsPiles = [
   { value: "A", suit: "♦", color: "red" },
@@ -91,19 +104,19 @@ function generateNewCard() {
     { suit: "♣", color: "black" },
   ];
   const values = [
-    {value: "A", rank: 1},
-    {value: "2", rank: 2},
-    {value: "3", rank: 3},
-    {value: "4", rank: 4},
-    {value: "5", rank: 5},
-    {value: "6", rank: 6},
-    {value: "7", rank: 7},
-    {value: "8", rank: 8},
-    {value: "9", rank: 9},
-    {value: "10", rank: 10},
-    {value: "J", rank: 11},
-    {value: "Q", rank: 12},
-    {value: "K", rank: 13},
+    { value: "A", rank: 1 },
+    { value: "2", rank: 2 },
+    { value: "3", rank: 3 },
+    { value: "4", rank: 4 },
+    { value: "5", rank: 5 },
+    { value: "6", rank: 6 },
+    { value: "7", rank: 7 },
+    { value: "8", rank: 8 },
+    { value: "9", rank: 9 },
+    { value: "10", rank: 10 },
+    { value: "J", rank: 11 },
+    { value: "Q", rank: 12 },
+    { value: "K", rank: 13 },
   ];
   const chosenValue = values[getRandomIndex(values)]; // object with value and rank
   const chosenSuit = suits[getRandomIndex(suits)]; // object with suit and color
