@@ -5,14 +5,17 @@ import "./assets/img/playing-card.png";
 
 window.onload = function () {
   //write your code here
-  generateNewCard();
+  flipNewCard();
   const randomButton = document.querySelector("#draw-button");
   randomButton.addEventListener("click", () => {
-    generateNewCard();
+    flipNewCard();
   });
   colorCards(foundationsPiles);
   colorCards(tableauPiles);
 };
+
+let currentRandomValue = "A";
+let currentRandomSuit = "♠";
 
 const foundationsPiles = [
   { value: "A", suit: "♦", color: "red" },
@@ -31,6 +34,12 @@ const tableauPiles = [
   { value: "9", suit: "♦", color: "red" },
   "tableau",
 ];
+
+for (let i = 0; i < tableauPiles.length - 1; i++) {
+  generateNewCard();
+  tableauPiles[i].value = currentRandomValue;
+  tableauPiles[i].suit = currentRandomSuit.suit;
+}
 
 function colorCards(pileType, index) {
   let indexStart = index;
@@ -54,17 +63,23 @@ function colorCards(pileType, index) {
   return;
 }
 
-function flipNewCard(suitFlipped, valueFlipped) {
+function flipNewCard() {
+  generateNewCard();
+
   const HTMLSuits = document.querySelectorAll(".suit");
   for (let suit of HTMLSuits) {
-    suit.textContent = suitFlipped.suit;
-    suit.style.color = suitFlipped.color;
+    suit.textContent = currentRandomSuit.suit;
+    suit.style.color = currentRandomSuit.color;
   }
   const HTMLValue = document.querySelector(".card-value");
   console.log(HTMLValue);
-  HTMLValue.textContent = valueFlipped;
-  HTMLValue.style.color = suitFlipped.color;
+  HTMLValue.textContent = currentRandomValue;
+  HTMLValue.style.color = currentRandomSuit.color;
   return;
+}
+
+function getRandomIndex(arr) {
+  return Math.floor(Math.random() * arr.length);
 }
 
 function generateNewCard() {
@@ -89,10 +104,11 @@ function generateNewCard() {
     "Q",
     "K",
   ];
-  const chosenSuit = suits[getRandomIndex(suits)];
   const chosenValue = values[getRandomIndex(values)];
+  const chosenSuit = suits[getRandomIndex(suits)]; // object with suit and color
 
-  flipNewCard(chosenSuit, chosenValue);
+  currentRandomValue = chosenValue;
+  currentRandomSuit = chosenSuit; // object with suit and color
 
   // const HTMLSuits = document.querySelectorAll(".suit");
   // for (let suit of HTMLSuits) {
@@ -104,8 +120,4 @@ function generateNewCard() {
   // HTMLValue.textContent = chosenValue;
   // HTMLValue.style.color = chosenSuit.color;
   return;
-}
-
-function getRandomIndex(arr) {
-  return Math.floor(Math.random() * arr.length);
 }
