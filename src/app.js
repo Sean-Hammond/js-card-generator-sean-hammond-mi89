@@ -14,8 +14,8 @@ window.onload = function () {
   colorCards(tableauPiles);
 };
 
-let currentRandomValue = "A";
-let currentRandomSuit = "♠";
+let currentRandomValue = {value: "A", rank: 1};
+let currentRandomSuit = {suit: "♠", color: "black"};
 
 const foundationsPiles = [
   { value: "A", suit: "♦", color: "red" },
@@ -37,7 +37,7 @@ const tableauPiles = [
 
 for (let i = 0; i < tableauPiles.length - 1; i++) {
   generateNewCard();
-  tableauPiles[i].value = currentRandomValue;
+  tableauPiles[i].value = currentRandomValue.value;
   tableauPiles[i].suit = currentRandomSuit.suit;
 }
 
@@ -73,7 +73,7 @@ function flipNewCard() {
   }
   const HTMLValue = document.querySelector(".card-value");
   console.log(HTMLValue);
-  HTMLValue.textContent = currentRandomValue;
+  HTMLValue.textContent = currentRandomValue.value;
   HTMLValue.style.color = currentRandomSuit.color;
   return;
 }
@@ -90,24 +90,24 @@ function generateNewCard() {
     { suit: "♣", color: "black" },
   ];
   const values = [
-    "A",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "J",
-    "Q",
-    "K",
+    {value: "A", rank: 1},
+    {value: "2", rank: 2},
+    {value: "3", rank: 3},
+    {value: "4", rank: 4},
+    {value: "5", rank: 5},
+    {value: "6", rank: 6},
+    {value: "7", rank: 7},
+    {value: "8", rank: 8},
+    {value: "9", rank: 9},
+    {value: "10", rank: 10},
+    {value: "J", rank: 11},
+    {value: "Q", rank: 12},
+    {value: "K", rank: 13},
   ];
-  const chosenValue = values[getRandomIndex(values)];
+  const chosenValue = values[getRandomIndex(values)]; // object with value and rank
   const chosenSuit = suits[getRandomIndex(suits)]; // object with suit and color
 
-  currentRandomValue = chosenValue;
+  currentRandomValue = chosenValue; // object with value and rank
   currentRandomSuit = chosenSuit; // object with suit and color
 
   // const HTMLSuits = document.querySelectorAll(".suit");
