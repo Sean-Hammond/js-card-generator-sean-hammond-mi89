@@ -10,12 +10,13 @@ window.onload = function () {
   randomButton.addEventListener("click", () => {
     flipNewCard();
   });
-  colorCards(foundationsPiles);
-  colorCards(tableauPiles);
+  changeCards(foundationsPiles);
+  changeCards(tableauPiles);
 };
 
 let currentRandomValue = {value: "A", rank: 1};
 let currentRandomSuit = {suit: "♠", color: "black"};
+
 
 const foundationsPiles = [
   { value: "A", suit: "♦", color: "red" },
@@ -41,7 +42,7 @@ for (let i = 0; i < tableauPiles.length - 1; i++) {
   tableauPiles[i].suit = currentRandomSuit.suit;
 }
 
-function colorCards(pileType, index) {
+function changeCards(pileType, index) {
   let indexStart = index;
   let indexEnd = index;
   if (index === undefined) {
