@@ -1,18 +1,22 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 .playing-card{
-    height: 63dvh;
+    height: 35dvh;
     aspect-ratio: .71;
-    max-width: 45dvh;
+    max-width: 25dvh;
     background-color: white;
     border-radius: 7%;
     display: flex;
     justify-content: center;
 }
 
+.playing-card:hover {
+    background-color: turquoise;
+}
+
 .playing-card img {
     rotate: 90deg;
-    width: 56dvh; /* apparent HEIGHT when image is rotated 90deg */
+    width: 31dvh; /* apparent HEIGHT when image is rotated 90deg */
     object-fit: contain;
 }
 
@@ -21,5 +25,5 @@
 }
 
 .value{
-    font-size: 5rem;
+    font-size: 3rem;
 }
