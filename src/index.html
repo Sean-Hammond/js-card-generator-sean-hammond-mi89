@@ -19,7 +19,9 @@
       <button class="btn btn-primary mx-auto mt-3">Draw New Card</button>
     </div>
     <div class="container-fluid d-flex justify-content-center">
-      <div class="playing-card mt-5 me-3 d-flex flex-column justify-content-between">
+      <div
+        class="playing-card mt-5 me-3 d-flex flex-column justify-content-between"
+      >
         <div class="top-row row mt-3">
           <div class="col-1"></div>
           <div class="col-2 d-flex">
@@ -43,9 +45,29 @@
         </div>
       </div>
       <div id="draw-button" class="playing-card mt-5">
-        <img src="./assets/img/playing-card.png" alt="turquoise geometric pattern for the back of a playing card">
+        <img
+          src="./assets/img/playing-card.png"
+          alt="turquoise geometric pattern for the back of a playing card"
+        />
       </div>
     </div>
+    <ul class="row list-inline">
+      <!-- Foundations piles -->
+      <li class="col-1 list-inline-item">A♦</li>
+      <li class="col-1 list-inline-item">A♥</li>
+      <li class="col-1 list-inline-item">A♠</li>
+      <li class="col-1 list-inline-item">A♣</li>
+
+      <!-- Spacer -->
+      <li class="col-1"> </li>
+
+      <!-- Tableau piles -->
+      <li class="col-1 list-inline-item">K♠</li>
+      <li class="col-1 list-inline-item">K♠</li>
+      <li class="col-1 list-inline-item">K♠</li>
+      <li class="col-1 list-inline-item">K♠</li>
+      <li class="col-1 list-inline-item">K♠</li>
+    </ul>
 
     <!-- Do not delete this script tag, this is what connects your HTML with the Javascript code -->
     <script type="module" src="/app.js"></script>
