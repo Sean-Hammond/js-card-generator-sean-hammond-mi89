@@ -10,9 +10,15 @@ window.onload = function () {
   randomButton.addEventListener("click", () => {
     flipNewCard();
   });
-  
-  changeCards(foundationsPiles);
-  changeCards(tableauPiles);
+  for (let i = 1; i < foundationsPiles.length; i++) {
+    const cardToCheck = document.querySelector("#foundations-" + i);
+    cardToCheck.addEventListener("click", () => {
+      currentCardSelected.pile = "foundations";
+      currentCardSelected.index = i - 1;
+    });
+  };
+  displayCards(foundationsPiles);
+  displayCards(tableauPiles);
   showSelectedCard();
 };
 
@@ -23,10 +29,14 @@ let currentCardSelected = { pile: "draw", index: 0 };
 function showSelectedCard() {
   const selectedCard = document.querySelector("#drawn-card");
   if (currentCardSelected.pile === "foundations") {
-    selectedCard = document.querySelector("#foundations-" + currentCardSelected.index);
+    selectedCard = document.querySelector(
+      "#foundations-" + currentCardSelected.index,
+    );
   }
   if (currentCardSelected.pile === "tableau") {
-    selectedCard = document.querySelector("#tableau-" + currentCardSelected.index);
+    selectedCard = document.querySelector(
+      "#tableau-" + currentCardSelected.index,
+    );
   }
   selectedCard.style.border = ".25rem solid red";
 }
@@ -55,7 +65,7 @@ for (let i = 0; i < tableauPiles.length - 1; i++) {
   tableauPiles[i].suit = currentRandomSuit.suit;
 }
 
-function changeCards(pileType, index) {
+function displayCards(pileType, index) {
   let indexStart = index;
   let indexEnd = index;
   if (index === undefined) {
