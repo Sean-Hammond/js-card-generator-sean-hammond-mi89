@@ -16,8 +16,8 @@ window.onload = function () {
     currentCardSelected = { pile: "draw", index: 0 };
     highlightSelectedCard();
   });
-  checkCardClicked(foundationsPiles);
-  checkCardClicked(tableauPiles);
+  checkCardEvents(foundationsPiles);
+  checkCardEvents(tableauPiles);
   displayCards(foundationsPiles);
   displayCards(tableauPiles);
   highlightSelectedCard();
@@ -26,6 +26,7 @@ window.onload = function () {
 let currentRandomValue = { value: "A", rank: 1 };
 let currentRandomSuit = { suit: "♠", color: "black" };
 let currentCardSelected = { pile: "draw", index: 0 };
+let previousCardSelected = { pile: "draw", index: 0 };
 
 function highlightSelectedCard() {
   let selectedCard = document.querySelector("#drawn-card");
@@ -75,13 +76,15 @@ const tableauPiles = [
   "tableau",
 ];
 
-function checkCardClicked(pilesName) {
+function checkCardEvents(pilesName) {
   for (let i = 1; i < pilesName.length; i++) {
     const cardToCheck = document.querySelector(
       "#" + pilesName[pilesName.length - 1] + "-" + i,
     );
     cardToCheck.addEventListener("click", () => {
       unHighlightSelcetedCard();
+      previousCardSelected = currentCardSelected;
+      console.log("previous card: ", previousCardSelected);
       currentCardSelected.pile = pilesName[pilesName.length - 1];
       currentCardSelected.index = i;
       console.log("Card clicked. Current Card Selected:", currentCardSelected);
