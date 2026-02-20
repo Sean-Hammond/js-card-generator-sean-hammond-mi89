@@ -10,14 +10,14 @@ window.onload = function () {
   randomButton.addEventListener("click", () => {
     flipNewCard();
   });
-  const drawnCard = this.document.querySelector("#drawn-card");
+  const drawnCard = document.querySelector("#drawn-card");
   drawnCard.addEventListener("click", () => {
     unHighlightSelcetedCard();
     currentCardSelected = { pile: "draw", index: 0 };
     highlightSelectedCard();
   });
   checkCardClicked(foundationsPiles);
-  // checkCardClicked(tableauPiles);
+  checkCardClicked(tableauPiles);
   displayCards(foundationsPiles);
   displayCards(tableauPiles);
   highlightSelectedCard();
@@ -77,7 +77,9 @@ const tableauPiles = [
 
 function checkCardClicked(pilesName) {
   for (let i = 1; i < pilesName.length; i++) {
-    const cardToCheck = document.querySelector("#foundations-" + i);
+    const cardToCheck = document.querySelector(
+      "#" + pilesName[pilesName.length - 1] + "-" + i,
+    );
     cardToCheck.addEventListener("click", () => {
       unHighlightSelcetedCard();
       currentCardSelected.pile = pilesName[pilesName.length - 1];
