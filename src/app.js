@@ -10,24 +10,22 @@ window.onload = function () {
   randomButton.addEventListener("click", () => {
     flipNewCard();
   });
-  for (let i = 1; i < foundationsPiles.length; i++) {
-    const cardToCheck = document.querySelector("#foundations-" + i);
-    cardToCheck.addEventListener("click", () => {
-      unHighlightSelcetedCard();
-      currentCardSelected.pile = "foundations";
-      currentCardSelected.index = i;
-      console.log("Card clicked. Current Card Selected:", currentCardSelected);
-      highlightSelectedCard();
-    });
-  }
+  const drawnCard = this.document.querySelector("#drawn-card");
+  drawnCard.addEventListener("click", () => {
+    unHighlightSelcetedCard();
+    currentCardSelected = { pile: "draw", index: 0 };
+    highlightSelectedCard();
+  });
+  checkCardClicked(foundationsPiles);
+  // checkCardClicked(tableauPiles);
   displayCards(foundationsPiles);
   displayCards(tableauPiles);
-  // highlightSelectedCard();
+  highlightSelectedCard();
 };
 
 let currentRandomValue = { value: "A", rank: 1 };
 let currentRandomSuit = { suit: "♠", color: "black" };
-let currentCardSelected = { pile: "draw", index: 1 };
+let currentCardSelected = { pile: "draw", index: 0 };
 
 function highlightSelectedCard() {
   let selectedCard = document.querySelector("#drawn-card");
@@ -76,6 +74,19 @@ const tableauPiles = [
   { value: "9", suit: "♦", color: "red" },
   "tableau",
 ];
+
+function checkCardClicked(pilesName) {
+  for (let i = 1; i < pilesName.length; i++) {
+    const cardToCheck = document.querySelector("#foundations-" + i);
+    cardToCheck.addEventListener("click", () => {
+      unHighlightSelcetedCard();
+      currentCardSelected.pile = pilesName[pilesName.length - 1];
+      currentCardSelected.index = i;
+      console.log("Card clicked. Current Card Selected:", currentCardSelected);
+      highlightSelectedCard();
+    });
+  }
+}
 
 for (let i = 0; i < tableauPiles.length - 1; i++) {
   generateNewCard();
@@ -152,14 +163,5 @@ function generateNewCard() {
   currentRandomValue = chosenValue; // object with value and rank
   currentRandomSuit = chosenSuit; // object with suit and color
 
-  // const HTMLSuits = document.querySelectorAll(".suit");
-  // for (let suit of HTMLSuits) {
-  //   suit.textContent = chosenSuit.suit;
-  //   suit.style.color = chosenSuit.color;
-  // }
-  // const HTMLValue = document.querySelector(".card-value");
-  // console.log(HTMLValue);
-  // HTMLValue.textContent = chosenValue;
-  // HTMLValue.style.color = chosenSuit.color;
   return;
 }
