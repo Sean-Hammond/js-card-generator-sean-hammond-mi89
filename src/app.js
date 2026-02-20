@@ -13,21 +13,24 @@ window.onload = function () {
   for (let i = 1; i < foundationsPiles.length; i++) {
     const cardToCheck = document.querySelector("#foundations-" + i);
     cardToCheck.addEventListener("click", () => {
+      unHighlightSelcetedCard();
       currentCardSelected.pile = "foundations";
-      currentCardSelected.index = i - 1;
+      currentCardSelected.index = i;
+      console.log("Card clicked. Current Card Selected:", currentCardSelected);
+      highlightSelectedCard();
     });
-  };
+  }
   displayCards(foundationsPiles);
   displayCards(tableauPiles);
-  showSelectedCard();
+  // highlightSelectedCard();
 };
 
 let currentRandomValue = { value: "A", rank: 1 };
 let currentRandomSuit = { suit: "♠", color: "black" };
-let currentCardSelected = { pile: "draw", index: 0 };
+let currentCardSelected = { pile: "draw", index: 1 };
 
-function showSelectedCard() {
-  const selectedCard = document.querySelector("#drawn-card");
+function highlightSelectedCard() {
+  let selectedCard = document.querySelector("#drawn-card");
   if (currentCardSelected.pile === "foundations") {
     selectedCard = document.querySelector(
       "#foundations-" + currentCardSelected.index,
@@ -39,6 +42,21 @@ function showSelectedCard() {
     );
   }
   selectedCard.style.border = ".25rem solid red";
+}
+
+function unHighlightSelcetedCard() {
+  let selectedCard = document.querySelector("#drawn-card");
+  if (currentCardSelected.pile === "foundations") {
+    selectedCard = document.querySelector(
+      "#foundations-" + currentCardSelected.index,
+    );
+  }
+  if (currentCardSelected.pile === "tableau") {
+    selectedCard = document.querySelector(
+      "#tableau-" + currentCardSelected.index,
+    );
+  }
+  selectedCard.style.border = "none";
 }
 
 const foundationsPiles = [
